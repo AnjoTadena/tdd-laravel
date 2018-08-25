@@ -3,15 +3,12 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Thread;
 use App\Reply;
 use App\User;
 
 class ReplyTest extends TestCase
 {
-	use DatabaseMigrations;
-	
 	public function setUp()
 	{
 		parent::setUp();

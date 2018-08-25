@@ -9,6 +9,7 @@
                 <div class="card-body">
                     {{$thread->body}}
                 </div>
+                <div class="card-footer">By: <a href="#">{{$thread->creatorName()}}</a></div>
             </div>
         </div>
     </div>

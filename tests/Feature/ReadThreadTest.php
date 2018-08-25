@@ -3,14 +3,11 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Thread;
 use App\Reply;
 
 class ReadThreadTest extends TestCase
 {
-    use DatabaseMigrations;
-
     public function setUp()
     {
         parent::setUp();

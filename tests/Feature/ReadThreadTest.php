@@ -14,7 +14,7 @@ class ReadThreadTest extends TestCase
     {
         parent::setUp();
 
-        $this->thread = factory(Thread::class)->create();
+        $this->thread = create(Thread::class);
     }
 
     // A user can view all threads
@@ -36,7 +36,7 @@ class ReadThreadTest extends TestCase
     /** @test */
     public function a_user_can_read_all_replies_asssociated_with_the_thread()
     {
-        $reply = factory(Reply::class)->create(['thread_id' => $this->thread->id]);
+        $reply = create(Reply::class, ['thread_id' => $this->thread->id]);
 
         $this->get($this->thread->path())
             ->assertSee($reply->body);

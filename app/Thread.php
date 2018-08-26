@@ -27,4 +27,9 @@ class Thread extends Model
 	{
 		return $this->creator->name;
 	}
+
+	public function addReply($request)
+	{
+		$this->replies()->create($request);
+	}
 }

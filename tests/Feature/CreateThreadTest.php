@@ -15,9 +15,13 @@ class CreateThreadTest extends TestCase
 	/** @test */
 	public function an_unauthenticated_user_cannot_create_a_thread()
 	{
-		$this->expectException('Illuminate\Auth\AuthenticationException');
-		
-		$this->post('/threads', []);
+		$this->withExceptionHandling();
+
+		$this->get('/threads/create')
+			->assertRedirect('/login');
+
+		$this->post('/threads', [])
+			->assertRedirect('/login');
 	}
 
 	/** @test */
@@ -26,7 +30,7 @@ class CreateThreadTest extends TestCase
 		// User must be signin
 		$this->signIn();
 
-		$thread = factory(Thread::class)->make();
+		$thread = make(Thread::class);
 
 		$this->post('/threads', $thread->toArray());
 

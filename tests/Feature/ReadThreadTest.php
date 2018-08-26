@@ -8,6 +8,8 @@ use App\Reply;
 
 class ReadThreadTest extends TestCase
 {
+    protected $thread;
+
     public function setUp()
     {
         parent::setUp();
@@ -27,7 +29,7 @@ class ReadThreadTest extends TestCase
     /** @test */
     public function a_user_can_view_thread()
     {
-        $this->get('threads/' . $this->thread->id)
+        $this->get($this->thread->path())
             ->assertSee($this->thread->title);
     }
 
@@ -36,7 +38,7 @@ class ReadThreadTest extends TestCase
     {
         $reply = factory(Reply::class)->create(['thread_id' => $this->thread->id]);
 
-        $this->get('threads/' . $this->thread->id)
+        $this->get($this->thread->path())
             ->assertSee($reply->body);
     }
 }

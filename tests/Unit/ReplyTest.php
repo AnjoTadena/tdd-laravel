@@ -9,6 +9,8 @@ use App\User;
 
 class ReplyTest extends TestCase
 {
+	protected $thread;
+
 	public function setUp()
 	{
 		parent::setUp();

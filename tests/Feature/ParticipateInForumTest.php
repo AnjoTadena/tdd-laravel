@@ -8,13 +8,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 use App\Thread;
 use App\Reply;
+use Illuminate\Auth\AuthenticationException;
 
 class ParticipateInForumTest extends TestCase
 {
 	/** @test */
 	public function unauthenticated_user_cannot_participate_in_forum()
 	{
-		$this->expectException('Illuminate\Auth\AuthenticationException');
+		$this->expectException(AuthenticationException::class);
 
 		$this->post('threads/1/replies', []);
 	}
